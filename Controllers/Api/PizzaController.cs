@@ -10,7 +10,7 @@ namespace la_mia_pizzeria_static.Controllers.Api
     [ApiController]
     public class PizzaController : ControllerBase
     {
-        readonly Restaurant _db = new Restaurant();
+        private readonly Restaurant _db = new Restaurant();
 
         public IActionResult Get()
         {

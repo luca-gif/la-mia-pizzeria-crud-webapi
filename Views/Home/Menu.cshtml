@@ -1,40 +1,58 @@
 ﻿@{
     Layout = "_LayoutHome";
-    }
 
-
-
-
-
-
-
-
-@*@model List<Pizza>;
-
-    <div class="row">
-        
-@{
-        foreach(var pizza in Model){
-        <div class="col-2">
-
-            <div class="card">
-                <img class="card-img-top" src="@pizza.Image" alt="@pizza.Name">
-                <div class="card-body">
-                    <h5 class="card-title">@pizza.Name</h5>
-                    <p class="card-text">@pizza.Description</p>
-                    <ul>
-                        @{
-                            foreach (var ingredient in pizza.Ingredients)
-                            {
-                                <li><small>@ingredient.Name</small></li>
-                            }
-                        }
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-        }
 }
+
+
+<div class="row card-container"></div>
+
+
+@section scripts
+{
+
+<script>
+
+    let arrayPizza = [];
+
+   @* Faccio chiamata axios*@
+
+        const apiUrl = "/api/pizza/get"
+
+        axios.get(apiUrl)
+        .then((res) => {
+
+            arrayPizza = res.data;
+
+            console.log(arrayPizza);
         
-    </div>*@
+
+
+            for (let i = 0; i < 5; i++) {
+
+            document.querySelector(".card-container").innerHTML +=
+
+            `<div class=" col-2">
+                <div class="card">
+
+                    <img class="card-img-top" src="${arrayPizza[i].image}" alt="${arrayPizza[i].name}" title="${arrayPizza[i].name}">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">${arrayPizza[i].name}</h5>
+                        <p class="card-text">${arrayPizza[i].description}</p>
+                        <p class="card-text">${arrayPizza[i].price.toFixed(2)}</p>
+                        <a href="/Pizza/Detail/${arrayPizza[i].pizzaId}" class="btn btn-warning btn-sm w-100">Vedi</a>
+
+                    </div>
+                </div>
+            </div>`
+
+            }
+
+        })
+        .catch((e) => {
+            console.log(e.message)
+        })
+
+    </script>
+    }
