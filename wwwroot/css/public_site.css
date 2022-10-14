@@ -1,0 +1,21 @@
+.banner {
+    background-image: url("https://designs.princesharma.in/wp-content/uploads/2021/08/Pizza-scaled.jpg");
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+    margin: -48px;
+    margin-bottom: 30px;
+}
+
+nav {
+    background-color: transparent;
+    padding: 0 !important;
+}
+
+.card-img-top{
+    max-height: 120px;
+}
+
+.card{
+    min-height: 350px;
+}

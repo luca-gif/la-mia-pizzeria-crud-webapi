@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "_LayoutHome";
+    }
+
+
+@model List<Pizza>;
+
+    <div class="row">
+        
+@{
+        foreach(var pizza in Model){
+        <div class="col-2">
+
+            <div class="card">
+                <img class="card-img-top" src="@pizza.Image" alt="@pizza.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@pizza.Name</h5>
+                    <p class="card-text">@pizza.Description</p>
+                    <ul>
+                        @{
+                            foreach (var ingredient in pizza.Ingredients)
+                            {
+                                <li><small>@ingredient.Name</small></li>
+                            }
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        }
+}
+        
+    </div>
