@@ -26,5 +26,15 @@ namespace la_mia_pizzeria_static.Controllers.Api
 
             return Ok(pizzas.ToList());
         }
+
+        public IActionResult Detail(int? id)
+        {
+            Pizza pizza = _db.ListaPizze.Include("Category").Include("Ingredients").Where(pizza => pizza.PizzaId == id).FirstOrDefault();
+
+
+
+            return Ok(pizza);
+        }
+
     }
 }

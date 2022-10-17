@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_LayoutHome";
+    }
+
+
+<div class="detail-container d-flex justify-content-center my-5">
+ 
+</div>
+
+<script>
+
+    const apiUrl = "/api/pizza/detail"
+    let id = window.location.pathname.split('/')[3]
+
+    axios.get(apiUrl, {
+        params: {
+            id: id
+        }
+    })
+    .then((res) => {
+
+        const pizza = res.data;
+        //console.log(res.data)
+
+        document.querySelector(".detail-container").innerHTML += `
+
+            <div class="card mx-2" style="width: 18rem;">
+                    <img class="card-img-top" style="height: 160px" src="${pizza.image}" alt="${pizza.name}">
+            <div class="card-body">
+                <h5 class="card-title">${pizza.name}</h5>
+                <p class="card-text">${pizza.description}</p>
+
+
+                    <p class="card-text"><small>${pizza.category.name}</small></p>
+
+                    <p class="card-text">&euro; ${pizza.price.toFixed(2)} </p>
+                <a href="/home/menu" class="btn btn-warning w-100">Indietro</a>
+            </div>
+        </div>
+        `
+    })
+
+</script>

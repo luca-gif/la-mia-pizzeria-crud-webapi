@@ -19,6 +19,13 @@ namespace la_mia_pizzeria_static.Controllers.Guest
 
             return View();
         }
+
+        public IActionResult Detail()
+        {
+
+            return View("PizzaDetails");
+        }
+
     }
 
 }

@@ -8,12 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Home\Menu.cshtml.css" />
+    <None Remove="Views\Home\Menu - Copia.cshtml.css" />
     <None Remove="Views\Pizza\Create.cshtml.scss" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Views\Home\Menu.cshtml.css" />
     <Content Include="Views\Pizza\Create.cshtml.scss" />
   </ItemGroup>
 

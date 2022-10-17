@@ -9,7 +9,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text h-100"> <i class="fa-solid fa-magnifying-glass"></i> </span>
         </div>
-        <input type="text" class="form-control search" placeholder="Trova la tua pizza">
+        <input type="text" class="form-control search" placeholder="Cerca la tua pizza...">
 
     </div>
 
@@ -27,7 +27,7 @@
     function findPizza(){
             if (event.key === "Enter"){
 
-            nameSearched = this.value
+            nameSearched = this.value.trim()
 
             getPizzas(nameSearched);
         }
@@ -70,14 +70,14 @@
                         ` <div class=" col-2">
                             <div class="card">
 
-                                <img class="card-img-top" src="${pizza.image}" alt="${pizza.name}" title="${pizza.name}">
+                                <a href="/home/detail/${pizza.pizzaId}"><img class="card-img-top" src="${pizza.image}" alt="${pizza.name}" title="${pizza.name}"></a>
 
                                 <div class="card-body">
 
                                     <h5 class="card-title">${pizza.name}</h5>
                                     <p class="card-text">${pizza.description}</p>
                                     <p class="card-text">${pizza.price.toFixed(2)}</p>
-                                    <p class="card-text alert-primary">${pizza.category?.name}</p>
+                                    <p class="card-text alert-primary text-center">${pizza.category?.name}</p>
                                     <ul> ${ingredients} </ul>
 
                                </div>
