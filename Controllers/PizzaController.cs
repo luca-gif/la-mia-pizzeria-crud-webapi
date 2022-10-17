@@ -22,7 +22,7 @@ namespace la_mia_pizzeria_static.Controllers
             using (Restaurant db = new Restaurant())
             {
 
-                List<Pizza> pizzas = db.ListaPizze.Include("Category").OrderBy(pizza => pizza.Price).ToList();
+                List<Pizza> pizzas = db.ListaPizze.Include("Category").Include("Ingredients").OrderBy(pizza => pizza.Price).ToList();
 
                 return View("Index", pizzas);
             }
@@ -134,7 +134,7 @@ namespace la_mia_pizzeria_static.Controllers
             }
         }
 
-        
+
         public IActionResult Detail(int id)
         {
             Restaurant db = new Restaurant();

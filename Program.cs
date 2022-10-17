@@ -1,6 +1,8 @@
+using la_mia_pizzeria_static.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using la_mia_pizzeria_static.Context;
+using System.Text.Json.Serialization;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("RestaurantConnection") ?? throw new InvalidOperationException("Connection string 'RestaurantConnection' not found.");
 
@@ -12,6 +14,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+//Ignora i cicli nei Json (risolve il problema "Include()")
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 var app = builder.Build();
 
@@ -39,6 +45,4 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
-
 app.Run();
-

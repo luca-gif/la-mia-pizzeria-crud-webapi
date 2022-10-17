@@ -1,6 +1,5 @@
 ﻿using la_mia_pizzeria_static.Context;
 using la_mia_pizzeria_static.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,11 +11,20 @@ namespace la_mia_pizzeria_static.Controllers.Api
     {
         private readonly Restaurant _db = new Restaurant();
 
-        public IActionResult Get()
+        public IActionResult Get(string? pizzaName)
         {
-            List<Pizza> pizzas = _db.ListaPizze.ToList();
+            List<Pizza> pizzas = new List<Pizza>();
 
-            return Ok(pizzas);
+            if (pizzaName != null)
+            {
+                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").Where(pizza => pizza.Name.ToLower().Contains(pizzaName.ToLower())).ToList();
+            }
+            else
+            {
+                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").ToList();
+            }
+
+            return Ok(pizzas.ToList());
         }
     }
 }

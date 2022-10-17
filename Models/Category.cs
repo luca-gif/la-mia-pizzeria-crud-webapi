@@ -6,6 +6,5 @@
         public string? Name { get; set; }
 
         public List<Pizza>? Pizze { get; set; }
-
     }
 }
