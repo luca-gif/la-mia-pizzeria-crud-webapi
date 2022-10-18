@@ -29,16 +29,16 @@
 
 
 <script>
-    
+   
     function sendMessage(e){
 
         const url = "/api/messages/sendMessage";
 
-        const nome = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const titolo = document.getElementById("title").value;
-        const contenuto = document.getElementById("text").value;
-
+        let nome = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let titolo = document.getElementById("title").value;
+        let contenuto = document.getElementById("text").value;
+        
         e.preventDefault();
 
         axios.post(url, {
@@ -51,14 +51,23 @@
         })
             .then((r) => {
 
+                reset();
                 alert('Messaggio inviato!')
-                console.log(r)
+
             })
             .catch((e) => {
                 console.log(e.message)
 
                 alert('Qualcosa è andato storto, riprova!')
             })
+        }
+    
+    function reset(){
+
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("title").value = "";
+        document.getElementById("text").value = "";
     }
 
 </script>

@@ -34,7 +34,7 @@ namespace la_mia_pizzeria_static.Controllers.Api
             db.Messages.Add(message);
             db.SaveChanges();
 
-            return Ok();
+            return Ok(new { message = "sended" });
         }
 
         // PUT api/<MessagesController>/5
