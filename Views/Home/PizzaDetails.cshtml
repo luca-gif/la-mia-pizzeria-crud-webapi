@@ -1,15 +1,29 @@
 ﻿@{
-    Layout = "_LayoutHome";
+    Layout = null;
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] Delicius pizza</title>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/public_site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/la_mia_pizzeria_static.styles.css" asp-append-version="true" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.2/axios.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    </head>
     }
 
 
 <div class="detail-container d-flex justify-content-center my-5">
+    <div class="pizza-info"></div>
+    <div class="pizza-image"></div>
  
 </div>
 
 <script>
 
-    const apiUrl = "/api/pizza/detail"
+    const apiUrl = "/api/pizza/dettaglio"
     let id = window.location.pathname.split('/')[3]
     //console.log(@ViewData["pizzaId"])
 
@@ -21,24 +35,25 @@
     .then((res) => {
 
         const pizza = res.data;
+     
         //console.log(res.data)
 
-        document.querySelector(".detail-container").innerHTML += `
+            document.querySelector(".pizza-info").innerHTML += `
 
-            <div class="card mx-2" style="width: 18rem;">
-                    <img class="card-img-top" style="height: 160px" src="${pizza.image}" alt="${pizza.name}">
-            <div class="card-body">
-                <h5 class="card-title">${pizza.name}</h5>
-                <p class="card-text">${pizza.description}</p>
-
+                  
+                    <h5 class="card-title">${pizza.name}</h5>
+                    <p class="card-text">${pizza.description}</p>
 
                     <p class="card-text"><small>${pizza.category.name}</small></p>
 
                     <p class="card-text">&euro; ${pizza.price.toFixed(2)} </p>
-                <a href="/home/menu" class="btn btn-warning w-100">Indietro</a>
-            </div>
-        </div>
-        `
+                    <a href="/home/menu" class="btn btn-warning w-100">Indietro</a>
+            `
+
+
+        document.querySelector(".pizza-image").innerHTML += 
+        
+        ` <img class="card-img-top" src="${pizza.image}" alt="${pizza.name}"> `
     })
 
 </script>

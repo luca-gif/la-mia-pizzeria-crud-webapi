@@ -4,10 +4,7 @@ namespace la_mia_pizzeria_static.Models
 {
     public class Pizza
     {
-        public Pizza()
-        {
 
-        }
 
         public int PizzaId { get; set; }
 
@@ -31,6 +28,19 @@ namespace la_mia_pizzeria_static.Models
         public Category? Category { get; set; }
 
         public List<Ingredients>? Ingredients { get; set; }
+
+        public Pizza()
+        {
+
+        }
+
+        public Pizza(string name, string description, string image, double price)
+        {
+            Name = name;
+            Description = description;
+            Image = image;
+            Price = price;
+        }
 
     }
 }

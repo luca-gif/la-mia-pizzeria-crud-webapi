@@ -17,5 +17,16 @@ nav {
 }
 
 .card {
-    height: 400px;
+    height: 380px;
+    margin-bottom: 20px;
+}
+
+.ingredients{
+    height: 105px;
+    overflow: auto;
+}
+
+.pizza-info {
+    width: 300px;
+    height: 300px;
 }

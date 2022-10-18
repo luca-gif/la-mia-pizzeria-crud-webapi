@@ -17,21 +17,19 @@ namespace la_mia_pizzeria_static.Controllers.Api
 
             if (pizzaName != null)
             {
-                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").Where(pizza => pizza.Name.ToLower().Contains(pizzaName.ToLower())).ToList();
+                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").OrderBy(p => p.Price).Where(pizza => pizza.Name.ToLower().Contains(pizzaName.ToLower())).ToList();
             }
             else
             {
-                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").ToList();
+                pizzas = _db.ListaPizze.Include("Category").Include("Ingredients").OrderBy(p => p.Price).ToList();
             }
 
             return Ok(pizzas.ToList());
         }
 
-        public IActionResult Detail(int? id)
+        public IActionResult Dettaglio(int? id)
         {
             Pizza pizza = _db.ListaPizze.Include("Category").Include("Ingredients").Where(pizza => pizza.PizzaId == id).FirstOrDefault();
-
-
 
             return Ok(pizza);
         }

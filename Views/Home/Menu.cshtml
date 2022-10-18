@@ -9,7 +9,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text h-100"> <i class="fa-solid fa-magnifying-glass"></i> </span>
         </div>
-        <input type="text" class="form-control search" placeholder="Cerca la tua pizza...">
+        <input type="text" class="form-control shadow-none search" placeholder="Cerca la tua pizza...">
 
     </div>
 
@@ -77,8 +77,8 @@
                                     <h5 class="card-title">${pizza.name}</h5>
                                     <p class="card-text">${pizza.description}</p>
                                     <p class="card-text">${pizza.price.toFixed(2)}</p>
-                                    <p class="card-text alert-primary text-center">${pizza.category?.name}</p>
-                                    <ul> ${ingredients} </ul>
+
+                                     <div class="ingredients"><ul> ${ingredients} </ul></div>
 
                                </div>
 

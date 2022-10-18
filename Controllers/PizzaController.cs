@@ -24,6 +24,18 @@ namespace la_mia_pizzeria_static.Controllers
 
                 List<Pizza> pizzas = db.ListaPizze.Include("Category").Include("Ingredients").OrderBy(pizza => pizza.Price).ToList();
 
+                if (pizzas.Count == 0)
+                {
+                    Pizza default1 = new Pizza("Margherita", "La pizza più famosa", "https://www.finedininglovers.it/sites/g/files/xknfdk1106/files/styles/recipes_1200_800_fallback/public/fdl_content_import_it/margherita-50kalo.jpg?itok=v9nHxNMS", 5);
+                    Pizza default2 = new Pizza("4 Formaggi", "Cheese lovers", "https://www.silviocicchi.com/pizzachef/wp-content/uploads/2015/01/42.jpg", 7.50);
+                    Pizza default3 = new Pizza("Capricciosa", "Un grande classico", "https://cdn.ilclubdellericette.it/wp-content/uploads/2020/07/pizza-capricciosa-790x500.jpg", 7.00);
+                    Pizza default4 = new Pizza("Marinara", "Semplice e gustosa", "https://cdn.shopify.com/s/files/1/0586/6795/8427/articles/marinara-for-web.jpg?crop=center", 4.00);
+                    Pizza default5 = new Pizza("Mortazza", "Pizza gourmet", "https://www.tondinisrl.it/public/img/IMG0117-768x572-191243.jpg", 8.50);
+
+                    db.ListaPizze.AddRange(new List<Pizza>() { default1, default2, default3, default4, default5 });
+                    db.SaveChanges();
+                }
+
                 return View("Index", pizzas);
             }
         }
