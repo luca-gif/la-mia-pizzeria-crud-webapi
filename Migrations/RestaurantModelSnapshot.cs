@@ -77,10 +77,13 @@ namespace la_mia_pizzeria_static.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<long?>("Description")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

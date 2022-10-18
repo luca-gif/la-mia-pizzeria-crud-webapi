@@ -4,7 +4,7 @@
 
 namespace la_mia_pizzeria_static.Migrations
 {
-    public partial class addMessage : Migration
+    public partial class MessageTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
