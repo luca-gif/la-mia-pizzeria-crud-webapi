@@ -28,16 +28,18 @@
 </form>
 
 
+
+
 <script>
    
     function sendMessage(e){
 
         const url = "/api/messages/sendMessage";
 
-        let nome = document.getElementById("name").value;
-        let email = document.getElementById("email").value;
-        let titolo = document.getElementById("title").value;
-        let contenuto = document.getElementById("text").value;
+        let nome = $("#name")[0].value;
+        let email = $("#email")[0].value;
+        let titolo = $("#title")[0].value;
+        let contenuto = $("#text")[0].value;
         
         e.preventDefault();
 
@@ -52,6 +54,7 @@
             .then((r) => {
 
                 reset();
+
                 alert('Messaggio inviato!')
 
             })
@@ -61,13 +64,16 @@
                 alert('Qualcosa è andato storto, riprova!')
             })
         }
+
+        // Funzioni
     
     function reset(){
 
-        document.getElementById("name").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("title").value = "";
-        document.getElementById("text").value = "";
+        $("#name")[0].value = "";
+        $("#email")[0].value = "";
+        $("#title")[0].value = "";
+        $("#text")[0].value = "";
     }
+
 
 </script>
