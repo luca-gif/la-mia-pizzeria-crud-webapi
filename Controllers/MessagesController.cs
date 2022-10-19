@@ -1,9 +1,11 @@
 ﻿using la_mia_pizzeria_static.Context;
 using la_mia_pizzeria_static.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace la_mia_pizzeria_static.Controllers
 {
+    [Authorize]
     public class MessagesController : Controller
     {
         private readonly Restaurant _db = new Restaurant();

@@ -40,31 +40,8 @@ namespace la_mia_pizzeria_static.Controllers.Api
         // PUT api/<MessagesController>/5
 
         [HttpPut("{id}")]
-        public IActionResult UpdateMessage(int id, [FromBody] Message message)
+        public void Put(int id, [FromBody] Message message)
         {
-
-            if (!ModelState.IsValid)
-            {
-                return UnprocessableEntity(ModelState);
-            }
-
-            else
-            {
-                Message msgToUpdate = _db.Messages.Where(msg => msg.Id == id).FirstOrDefault();
-
-                if (msgToUpdate != null)
-                {
-                    _db.Messages.Update(msgToUpdate);
-                    _db.SaveChanges();
-
-                    return Ok(msgToUpdate);
-                }
-                else
-                {
-                    // se non è stato trovato resituiamo che non esiste
-                    return NotFound();
-                }
-            }
 
         }
 

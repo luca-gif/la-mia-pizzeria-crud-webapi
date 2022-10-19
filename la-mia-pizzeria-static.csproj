@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\Admin\**" />
+    <Content Remove="Controllers\Admin\**" />
+    <EmbeddedResource Remove="Controllers\Admin\**" />
+    <None Remove="Controllers\Admin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Views\Home\Menu - Copia.cshtml.css" />
     <None Remove="Views\Pizza\Create.cshtml.scss" />
   </ItemGroup>
